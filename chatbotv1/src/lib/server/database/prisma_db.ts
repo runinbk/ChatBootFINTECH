@@ -11,7 +11,7 @@ const prisma = new PrismaClient();
 export class PrismaDb implements MessagesRepository, ConversationsRepository {
 	async getMessagesLimit(userId: string): Promise<MessageLimitResponse> {
 		const supabase = createClient(PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
-		let response = await supabase
+		const response = await supabase
 			.from('profiles')
 			.select('messages_limit, messages_sent')
 			.eq('id', userId);
@@ -27,7 +27,7 @@ export class PrismaDb implements MessagesRepository, ConversationsRepository {
 	}
 
 	async archiveConversation(conversationId: number): Promise<Conversation> {
-		let archivedConversation = await prisma.conversation.update({
+		const archivedConversation = await prisma.conversation.update({
 			where: {
 				id: conversationId
 			},
@@ -102,7 +102,7 @@ export class PrismaDb implements MessagesRepository, ConversationsRepository {
 	}
 
 	async newMessage(message: Message, tokens: number): Promise<Message> {
-		let prismaMessage = await prisma.message.create({
+		const prismaMessage = await prisma.message.create({
 			data: {
 				text: message.text,
 				role: message.role,

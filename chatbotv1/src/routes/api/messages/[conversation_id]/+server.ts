@@ -4,21 +4,21 @@ import { createChatCompletion, type ChatCompletionProps } from '$lib/server/open
 import { MessageRole, type Message } from '$lib/types';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 
-let messagesRepository: MessagesRepository = new PrismaDb();
+const messagesRepository: MessagesRepository = new PrismaDb();
 
 export const POST = (async ({ request }) => {
 	const messagePostRequest: MessagePostRequest = await request.json();
 
-	let messagesLimit = await messagesRepository.getMessagesLimit(messagePostRequest.message.user_id);
+	const messagesLimit = await messagesRepository.getMessagesLimit(messagePostRequest.message.user_id);
 	if (messagesLimit.messagesSent >= messagesLimit.messagesLimit) {
 		throw error(400, "You've reached your limit of messages");
 	}
 
-	let userMessage = await messagesRepository.newMessage(messagePostRequest.message, 0);
-	let conversationId = userMessage.conversationId;
-	let messages = await messagesRepository.getLastMessagesFromConversation(conversationId, 10);
+	const userMessage = await messagesRepository.newMessage(messagePostRequest.message, 0);
+	const conversationId = userMessage.conversationId;
+	const messages = await messagesRepository.getLastMessagesFromConversation(conversationId, 10);
 
-	let completionProps = {
+	const completionProps = {
 		systemMessage: messagePostRequest.systemMessage,
 		model: messagePostRequest.model,
 		max_tokens: 1000,
@@ -26,9 +26,9 @@ export const POST = (async ({ request }) => {
 		messages: messages.reverse()
 	} satisfies ChatCompletionProps;
 
-	let response = await createChatCompletion(completionProps);
+	const response = await createChatCompletion(completionProps);
 	if (response != null) {
-		var assistantMessage = {
+		let assistantMessage = {
 			id: -1, // this is overwritten by the database
 			text: response.content,
 			role: MessageRole.ASSISTANT,
@@ -45,8 +45,8 @@ export const POST = (async ({ request }) => {
 }) satisfies RequestHandler;
 
 export const GET = (async ({ params }) => {
-	let conversation_id = Number(params.conversation_id);
-	let messages = await messagesRepository.getAllMessagesFromConversation(conversation_id);
+	const conversation_id = Number(params.conversation_id);
+	const messages = await messagesRepository.getAllMessagesFromConversation(conversation_id);
 
 	return json(messages);
 }) satisfies RequestHandler;

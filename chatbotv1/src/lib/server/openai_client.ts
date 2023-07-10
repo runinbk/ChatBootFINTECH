@@ -30,7 +30,7 @@ type ChatCompletionResponse = {
 export async function createChatCompletion(
 	props: ChatCompletionProps
 ): Promise<ChatCompletionResponse | null> {
-	let openAiMessages = props.messages.map((message) => {
+	const openAiMessages = props.messages.map((message) => {
 		return {
 			role: message.role,
 			content: message.text,
@@ -45,7 +45,7 @@ export async function createChatCompletion(
 	} satisfies ChatCompletionRequestMessage);
 
 	try {
-		let response = await openai.createChatCompletion({
+		const response = await openai.createChatCompletion({
 			model: props.model,
 			messages: openAiMessages,
 			temperature: props.temperature,
@@ -55,13 +55,13 @@ export async function createChatCompletion(
 		//FIXME error handling missing
 		if (response.data.choices.length > 0) {
 			return {
-				content: response.data.choices[0].message!.content,
-				tokens: response.data.usage!.total_tokens
+				content: response.data.choices[0].message?.content,
+				tokens: response.data.usage?.total_tokens
 			} satisfies ChatCompletionResponse;
 		} else {
 			return null;
 		}
-	} catch (error: any) {
+	} catch (error: unknown) {
 		if (error.response) {
 			console.log(error.response.status);
 			console.log(error.response.data);

@@ -2,7 +2,7 @@ import type { ConversationsRepository } from '$lib/server/database/conversations
 import { PrismaDb } from '$lib/server/database/prisma_db';
 import { json, type RequestHandler } from '@sveltejs/kit';
 
-let conversationsRepository: ConversationsRepository = new PrismaDb();
+const conversationsRepository: ConversationsRepository = new PrismaDb();
 
 export const PUT = (async ({ request }) => {
 	const conversationPostRequest: ConversationArchivePostRequest = await request.json();

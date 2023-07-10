@@ -75,7 +75,7 @@
 	<slot />
 	<svelte:fragment slot="pageFooter"
 		><div class="flex flex-row ml-4 mb-4">
-			<a class="" href="https://github.com/juliooa/the_agents">
+			<a class="" href="https://github.com/runinbk">
 				<img width="32" src={githubLogo} alt="github logo" />
 			</a>
 		</div></svelte:fragment

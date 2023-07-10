@@ -3,12 +3,12 @@ import { PrismaDb } from '$lib/server/database/prisma_db';
 import type { Conversation } from '$lib/types';
 import { error, json, type RequestHandler } from '@sveltejs/kit';
 
-let conversationsRepository: ConversationsRepository = new PrismaDb();
+const conversationsRepository: ConversationsRepository = new PrismaDb();
 
 export const POST = (async ({ request, locals }) => {
 	const conversationPostRequest: ConversationPostRequest = await request.json();
 
-	let session = await locals.getSession();
+	const session = await locals.getSession();
 	if (!session) {
 		throw error(401);
 	}
