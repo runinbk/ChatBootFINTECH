@@ -74,6 +74,5 @@ For serverless(e.g. Vercel) you can use Supabase as database, check [this](https
 
 <img width="1728" alt="Screen Shot 2023-04-06 at 00 36 32" src="https://user-images.githubusercontent.com/1221345/230160694-0a5dd987-3c10-4f78-8f1c-deea5bb9ac18.png">
 
-# Contact
 
-Hi! you can find me here [@julioandresdev](https://twitter.com/julioandresdev)
+

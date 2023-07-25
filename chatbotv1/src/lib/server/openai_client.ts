@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { SECRET_OPENAI_API_KEY } from '$env/static/private';
 import { MessageRole, type Message } from '$lib/types';
 import { Configuration, OpenAIApi, type ChatCompletionRequestMessage } from 'openai';
@@ -23,8 +24,8 @@ export type ChatCompletionProps = {
 };
 
 type ChatCompletionResponse = {
-	content: string;
-	tokens: number;
+	content?: string;
+	tokens?: number;
 };
 
 export async function createChatCompletion(
@@ -61,7 +62,7 @@ export async function createChatCompletion(
 		} else {
 			return null;
 		}
-	} catch (error: unknown) {
+	} catch (error: any) {
 		if (error.response) {
 			console.log(error.response.status);
 			console.log(error.response.data);
