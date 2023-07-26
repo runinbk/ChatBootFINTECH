@@ -1,6 +1,6 @@
-![agents](https://user-images.githubusercontent.com/1221345/230161421-85f95bc3-28c6-4c57-a02d-75e23f6b4d8d.png)
+![chatbotV1](https://user-images.githubusercontent.com/1221345/230161421-85f95bc3-28c6-4c57-a02d-75e23f6b4d8d.png)
 
-# The Agents
+# chatbotV1
 
 Yet another ChatGPT UI, but more fit and svelte, and with a secure backend.
 
@@ -22,7 +22,7 @@ Backend/Frontend Sveltekit app to have multiple conversations with chatbots. It 
 - [x] Configurable system message to guide the assistant
 - [x] Prompt templates: Speed up your questions with predefined templates
 - [x] Prompt template parameters: Add parameters to the template and change them easily for
-- [x] Start agents with predefined system message and prompt templates
+- [x] Start chatbotV1 with predefined system message and prompt templates
 - [x] Save all the messages in your database, continue your conversations later
 - [x] Save the system message and prompt templates of conversations in the database
 - [x] You can easily change the database provider to whatever you want
@@ -73,6 +73,3 @@ For serverless(e.g. Vercel) you can use Supabase as database, check [this](https
 <img width="1728" alt="Screen Shot 2023-04-06 at 00 36 23" src="https://user-images.githubusercontent.com/1221345/230160666-6b7e4a1c-b821-47a9-b68e-68c907df9e6d.png">
 
 <img width="1728" alt="Screen Shot 2023-04-06 at 00 36 32" src="https://user-images.githubusercontent.com/1221345/230160694-0a5dd987-3c10-4f78-8f1c-deea5bb9ac18.png">
-
-
-
